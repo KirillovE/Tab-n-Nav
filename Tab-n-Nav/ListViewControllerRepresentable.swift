@@ -15,6 +15,7 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
   }
   
   let listType: ListType
+  let backgroundColor: Color
   private static var navigationControllers = [ListType: UINavigationController]()
   
   func makeUIViewController(context: Context) -> UINavigationController {
@@ -22,20 +23,81 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
       return existingNavController
     }
     
-    // here we should `resolve` our controllers
-    // with theirs respective `UINavigationContollers`
-    // and voilà
     let listVC: UIViewController
     switch listType {
     case .list1:
       listVC = ListViewController(
         title: "Jedi",
-        items: ["Anakin Skywalker", "Obi-Wan Kenobi", "Yoda", "Qui-Gon Jinn"]
+        items: [
+          "Obi-Wan Kenobi",
+          "Anakin Skywalker",
+          "Luke Skywalker",
+          "Ahsoka Tano",
+          "Yoda",
+          "Mace Windu",
+          "Qui-Gon Jinn",
+          "Shaak Ti",
+          "Ki-Adi-Mundi",
+          "Plo Koon",
+          "Aayla Secura",
+          "Luminara Unduli",
+          "Barriss Offee",
+          "Cal Kestis",
+          "Kanan Jarrus",
+          "Ezra Bridger",
+          "Depa Billaba",
+          "Cere Junda",
+          "Jocasta Nu",
+          "Stass Allie",
+          "Adi Gallia",
+          "Eeth Koth",
+          "Yaddle",
+          "Saesee Tiin",
+          "Tera Sinube",
+          "Coleman Trebor",
+          "Oppo Rancisis",
+          "Quinlan Vos",
+          "Rey Skywalker",
+          "Bastila Shan"
+        ],
+        backgroundColor: .init(backgroundColor)
       )
     case .list2:
       listVC = ListViewController(
         title: "Sith",
-        items: ["Vader", "Sidious", "Maul", "Tyranus"]
+        items: [
+          "Sidious",
+          "Vader",
+          "Maul",
+          "Tyranus",
+          "Plagueis",
+          "Bane",
+          "Revan",
+          "Malak",
+          "Nihilus",
+          "Sion",
+          "Traya",
+          "Zannah",
+          "Malgus",
+          "Marr",
+          "Krayt",
+          "Talon",
+          "Vitiate",
+          "Tenebrous",
+          "Ruin",
+          "Andeddu",
+          "Baras",
+          "Nox",
+          "Wyyrlok",
+          "Cognus",
+          "Rivan",
+          "Exar Kun",
+          "Naga Sadow",
+          "Tulak Hord",
+          "Ajunta Pall",
+          "Savage Opress"
+        ],
+        backgroundColor: .init(backgroundColor)
       )
     }
     let navigationController = UINavigationController(

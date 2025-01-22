@@ -10,10 +10,12 @@ import UIKit
 class ListViewController: UITableViewController {
   private let customTitle: String
   private let items: [String]
+  private let backgroundColor: UIColor
   
-  init(title: String, items: [String]) {
+  init(title: String, items: [String], backgroundColor: UIColor) {
     self.customTitle = title
     self.items = items
+    self.backgroundColor = backgroundColor
     super.init(style: .plain)
     self.view.backgroundColor = .clear
   }
@@ -57,7 +59,7 @@ class ListViewController: UITableViewController {
     tableView.deselectRow(at: indexPath, animated: true)
     let detailVC = DetailViewController(
       item: items[indexPath.row],
-      backgroundColor: .clear
+      backgroundColor: backgroundColor
     )
     navigationController?.pushViewController(detailVC, animated: true)
   }

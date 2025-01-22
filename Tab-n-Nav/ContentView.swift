@@ -2,17 +2,25 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var selectedTab = 0
-  
+  private let jediColor = Color(red: 153/255, green: 202/255, blue: 255/255)
+  private let sithColor = Color(red: 255/255, green: 137/255, blue: 131/255)
+
   var body: some View {
     withAnimation {
       Group {
         ZStack {
           if selectedTab == 0 {
-            ListViewControllerRepresentable(listType: .list1)
-              .transition(.move(edge: .leading))
+            ListViewControllerRepresentable(
+              listType: .list1,
+              backgroundColor: jediColor
+            )
+            .transition(.move(edge: .leading))
           } else {
-            ListViewControllerRepresentable(listType: .list2)
-              .transition(.move(edge: .trailing))
+            ListViewControllerRepresentable(
+              listType: .list2,
+              backgroundColor: sithColor
+            )
+            .transition(.move(edge: .trailing))
           }
         }
         .animation(.snappy, value: selectedTab)
@@ -27,7 +35,7 @@ struct ContentView: View {
         .padding()
       }
       .background(
-        selectedTab == 0 ? Color.blue.opacity(0.5) : .red.opacity(0.5)
+        selectedTab == 0 ? jediColor : sithColor
       )
     }
   }
