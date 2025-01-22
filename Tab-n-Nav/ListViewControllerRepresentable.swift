@@ -22,6 +22,9 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
       return existingNavController
     }
     
+    // here we should `resolve` our controllers
+    // with theirs respective `UINavigationContollers`
+    // and voilà
     let listVC: UIViewController
     switch listType {
     case .list1:
