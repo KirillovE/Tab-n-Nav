@@ -16,10 +16,10 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
   
   let listType: ListType
   let backgroundColor: Color
-  private static var navigationControllers = [ListType: UINavigationController]()
+  private static var viewControllers = [ListType: UIViewController]()
   
-  func makeUIViewController(context: Context) -> UINavigationController {
-    if let existingNavController = Self.navigationControllers[listType] {
+  func makeUIViewController(context: Context) -> UIViewController {
+    if let existingNavController = Self.viewControllers[listType] {
       return existingNavController
     }
     
@@ -60,7 +60,8 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
           "Rey Skywalker",
           "Bastila Shan"
         ],
-        backgroundColor: .init(backgroundColor)
+        backgroundColor: .init(backgroundColor),
+        isJediList: true
       )
     case .list2:
       listVC = ListViewController(
@@ -97,18 +98,16 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
           "Ajunta Pall",
           "Savage Opress"
         ],
-        backgroundColor: .init(backgroundColor)
+        backgroundColor: .init(backgroundColor),
+        isJediList: false
       )
     }
-    let navigationController = UINavigationController(
-      rootViewController: listVC
-    )
-    Self.navigationControllers[listType] = navigationController
-    return navigationController
+    Self.viewControllers[listType] = listVC
+    return listVC
   }
   
   func updateUIViewController(
-    _ uiViewController: UINavigationController,
+    _ uiViewController: UIViewController,
     context: Context
   ) { }
 }

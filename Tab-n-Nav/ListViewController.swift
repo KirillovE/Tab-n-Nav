@@ -11,11 +11,18 @@ class ListViewController: UITableViewController {
   private let customTitle: String
   private let items: [String]
   private let backgroundColor: UIColor
+  private let isJediList: Bool
   
-  init(title: String, items: [String], backgroundColor: UIColor) {
+  init(
+    title: String,
+    items: [String],
+    backgroundColor: UIColor,
+    isJediList: Bool
+  ) {
     self.customTitle = title
     self.items = items
     self.backgroundColor = backgroundColor
+    self.isJediList = isJediList
     super.init(style: .plain)
     self.view.backgroundColor = .clear
   }
@@ -61,6 +68,10 @@ class ListViewController: UITableViewController {
       item: items[indexPath.row],
       backgroundColor: backgroundColor
     )
-    navigationController?.pushViewController(detailVC, animated: true)
+    if isJediList {
+      navigationController?.pushViewController(detailVC, animated: true)
+    } else {
+      navigationController?.present(detailVC, animated: true)
+    }
   }
 }

@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
-    title = "Detail"
+    title = "Character"
     
     let label = UILabel()
     label.text = item
