@@ -10,8 +10,9 @@ import UIKit
 
 struct ListViewControllerRepresentable: UIViewControllerRepresentable {
   enum ListType {
-    case list1
-    case list2
+    case jedi
+    case programmers
+    case sith
   }
   
   let listType: ListType
@@ -25,7 +26,7 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
     
     let listVC: UIViewController
     switch listType {
-    case .list1:
+    case .jedi:
       listVC = ListViewController(
         title: "Jedi",
         items: [
@@ -63,7 +64,28 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
         backgroundColor: .init(backgroundColor),
         isJediList: true
       )
-    case .list2:
+    case .programmers:
+      listVC = ListViewController(
+        title: "Programmers",
+        items: [
+          "Linus Torvalds",
+          "Bjarne Stroustrup",
+          "Donald Knuth",
+          "Steve Wozniak",
+          "Marton Kerekes",
+          "James Gosling",
+          "Dennis Ritchie",
+          "Alizée Camarasa",
+          "Ken Thompson",
+          "Grace Hopper",
+          "Tim Berners-Lee",
+          "Mark Zuckerberg",
+          "Eugène Kiriloff"
+        ],
+        backgroundColor: .init(backgroundColor),
+        isJediList: true
+      )
+    case .sith:
       listVC = ListViewController(
         title: "Sith",
         items: [
