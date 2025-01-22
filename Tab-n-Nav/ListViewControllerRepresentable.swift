@@ -15,8 +15,13 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
   }
   
   let listType: ListType
+  private static var navigationControllers = [ListType: UINavigationController]()
   
-  func makeUIViewController( context: Context ) -> UINavigationController {
+  func makeUIViewController(context: Context) -> UINavigationController {
+    if let existingNavController = Self.navigationControllers[listType] {
+      return existingNavController
+    }
+    
     let listVC: UIViewController
     switch listType {
     case .list1:
@@ -31,6 +36,7 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
     let navigationController = UINavigationController(
       rootViewController: listVC
     )
+    Self.navigationControllers[listType] = navigationController
     return navigationController
   }
   

@@ -11,9 +11,10 @@ import UIKit
 class DetailViewController: UIViewController {
   private let item: String
   
-  init(item: String) {
+  init(item: String, backgroundColor: UIColor) {
     self.item = item
     super.init(nibName: nil, bundle: nil)
+    self.view.backgroundColor = backgroundColor
   }
   
   required init?(coder: NSCoder) {

@@ -13,6 +13,7 @@ class ListViewController: UITableViewController {
   init(items: [String]) {
     self.items = items
     super.init(style: .plain)
+    self.view.backgroundColor = .clear
   }
   
   required init?(coder: NSCoder) {
@@ -42,6 +43,8 @@ class ListViewController: UITableViewController {
       reuseIdentifier: "cell"
     )
     cell.textLabel?.text = items[indexPath.row]
+    cell.accessoryType = .disclosureIndicator
+    cell.backgroundColor = .clear
     return cell
   }
   
@@ -49,8 +52,11 @@ class ListViewController: UITableViewController {
     _ tableView: UITableView,
     didSelectRowAt indexPath: IndexPath
   ) {
-    tableView .deselectRow(at: indexPath, animated: true)
-    let detailVC = DetailViewController(item: items[indexPath.row])
+    tableView.deselectRow(at: indexPath, animated: true)
+    let detailVC = DetailViewController(
+      item: items[indexPath.row],
+      backgroundColor: .clear
+    )
     navigationController?.pushViewController(detailVC, animated: true)
   }
 }
