@@ -7,10 +7,14 @@ struct ContentView: View {
   private let jediColor = Color(red: 153/255, green: 202/255, blue: 255/255)
   private let programmerColor = Color(red: 103/255, green: 222/255, blue: 200/255)
   private let sithColor = Color(red: 255/255, green: 137/255, blue: 131/255)
-  
+
   var body: some View {
     NavigationView {
       VStack {
+        header
+
+        Spacer(minLength: .zero)
+
         ZStack {
           // Background color animation
           currentBackgroundColor
@@ -47,9 +51,9 @@ struct ContentView: View {
           }
           .animation(.snappy, value: selectedTab) // Animates the content transition
         }
-        
+ 
         Spacer(minLength: .zero)
-        
+ 
         Picker("Tabs", selection: $selectedTab) {
           Text("Jedi").tag(0)
           Text("Programmers").tag(1)
@@ -66,7 +70,7 @@ struct ContentView: View {
       }
     }
   }
-  
+
   private var currentBackgroundColor: Color {
     switch selectedTab {
     case 0: return jediColor
@@ -74,7 +78,7 @@ struct ContentView: View {
     default: return sithColor
     }
   }
-  
+
   private func transitionDirection(
     from oldTab: Int,
     to newTab: Int
@@ -84,6 +88,43 @@ struct ContentView: View {
     } else {
       .move(edge: .leading)
     }
+  }
+
+  private var header: some View {
+    ZStack {
+      // Background color animation
+      currentBackgroundColor
+        .ignoresSafeArea()
+        .animation(.snappy, value: selectedTab) // Animate background color
+      VStack {
+        Text("This is a place for some content shared between tabs")
+          .font(.title2)
+        HStack {
+          Image(systemName: "figure.skiing.downhill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .padding(5)
+          Image(systemName: "figure.surfing")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .padding(5)
+          Image(systemName: "figure.indoor.soccer")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .padding(5)
+          Image(systemName: "book.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .padding(5)
+          Image(systemName: "pencil.and.scribble")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .padding(5)
+        }
+        .frame(height: 50)
+      }
+    }
+    .frame(height: 150)
   }
 }
 
