@@ -14,7 +14,7 @@ struct ContentView: View {
             .transition(.move(edge: .trailing))
         }
       }
-      .animation(.easeInOut, value: selectedTab)
+      .animation(.snappy, value: selectedTab)
       
       Spacer(minLength: .zero)
       

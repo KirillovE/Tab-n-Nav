@@ -8,9 +8,11 @@
 import UIKit
 
 class ListViewController: UITableViewController {
+  private let customTitle: String
   private let items: [String]
   
-  init(items: [String]) {
+  init(title: String, items: [String]) {
+    self.customTitle = title
     self.items = items
     super.init(style: .plain)
     self.view.backgroundColor = .clear
@@ -22,7 +24,7 @@ class ListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "List"
+    title = customTitle
   }
   
   override func tableView(
