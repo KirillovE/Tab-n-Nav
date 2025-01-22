@@ -29,13 +29,13 @@ struct ListViewControllerRepresentable: UIViewControllerRepresentable {
     switch listType {
     case .list1:
       listVC = ListViewController(
-        title: "List 1",
-        items: ["Item 1A", "Item 1B", "Item 1C"]
+        title: "Jedi",
+        items: ["Anakin Skywalker", "Obi-Wan Kenobi", "Yoda", "Qui-Gon Jinn"]
       )
     case .list2:
       listVC = ListViewController(
-        title: "List 2",
-        items: ["Item 2A", "Item 2B", "Item 2C"]
+        title: "Sith",
+        items: ["Vader", "Sidious", "Maul", "Tyranus"]
       )
     }
     let navigationController = UINavigationController(

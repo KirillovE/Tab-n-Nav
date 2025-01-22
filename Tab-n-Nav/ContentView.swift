@@ -19,15 +19,15 @@ struct ContentView: View {
       Spacer(minLength: .zero)
       
       Picker("Tabs", selection: $selectedTab) {
-        Text("List 1").tag(0)
-        Text("List 2").tag(1)
+        Text("Jedi").tag(0)
+        Text("Sith").tag(1)
       }
       .pickerStyle(SegmentedPickerStyle())
       .padding()
     }
     .animation(.easeInOut) { group in
       group.background(
-        selectedTab == 0 ? Color.pink.opacity(0.6) : .purple.opacity(0.6)
+        selectedTab == 0 ? Color.blue.opacity(0.5) : .red.opacity(0.5)
       )
     }
   }
